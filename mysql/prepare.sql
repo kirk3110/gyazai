@@ -13,4 +13,4 @@ CREATE TABLE card_data
     power_toughness varchar(15),
     mana_cost varchar(15)
     );
-GRANT SELECT,UPDATE,INSERT,DELETE ON `gyazai`.card_data TO gyazai_user@localhost;
+GRANT SELECT,UPDATE,INSERT,DELETE ON `gyazai`.card_data TO `gyazai_user`@`localhost`;
