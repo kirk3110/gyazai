@@ -1,0 +1,15 @@
+version: '2'
+services:
+  mysql:
+    build: ./mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=secret_password
+      - MYSQL_USER=gyazai_user@localhost
+      - MYSQL_PASSWORD=gyazai_user_password
+    ports:
+      - "3306:3306"
+  python:
+    build: ./python
+    tty: true
+    depends_on:
+      - mysql
