@@ -5,12 +5,13 @@ CREATE DATABASE gyazai DEFAULT CHARACTER SET utf8;
 USE gyazai;
 CREATE TABLE card_data
     (
-    jan_name varchar(255),
-    eng_name varchar(255),
-    jan_text varchar(1023),
-    eng_text varchar(1023),
-    type varchar(127),
-    power_toughness varchar(15),
-    mana_cost varchar(15)
+    jan_name VARCHAR(255),
+    eng_name VARCHAR(255),
+    jan_text VARCHAR(1023),
+    eng_text VARCHAR(1023),
+    type VARCHAR(127),
+    power_toughness VARCHAR(15),
+    mana_cost VARCHAR(15),
+    loyality VARCHAR(3)
     );
 GRANT SELECT,UPDATE,INSERT,DELETE ON `gyazai`.card_data TO `gyazai_user`@`localhost`;
