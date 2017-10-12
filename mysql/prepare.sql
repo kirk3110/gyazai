@@ -14,4 +14,4 @@ CREATE TABLE card_data
     mana_cost VARCHAR(15),
     loyality VARCHAR(3)
     );
-GRANT SELECT,UPDATE,INSERT,DELETE ON `gyazai`.card_data TO `gyazai_user`@`localhost`;
+GRANT SELECT,UPDATE,INSERT,DELETE ON `gyazai`.card_data TO 'gyazai_user'@'%';
