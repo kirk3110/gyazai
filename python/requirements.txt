@@ -1,1 +1,4 @@
-PyMySQL==0.7.11
+PyMySQL>=0.7,<0.8
+tqdm>=4.15,<4.16
+beautifulsoup4>=4.6,<4.7
+lxml>=3.7,<3.8
