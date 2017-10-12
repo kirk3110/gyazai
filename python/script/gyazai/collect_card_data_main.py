@@ -12,4 +12,3 @@ if __name__ == '__main__':
         # 全てのカード情報をデータベースに登録
         for card_data in tqdm(CardDataCollecter.collect_all_card_data()):
             gyazai_db.insert_card_data(card_data)
-            break
