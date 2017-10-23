@@ -8,3 +8,4 @@ COPY requirements.txt $gyazai_dir/requirements.txt
 RUN pip install -r requirements.txt
 
 COPY script $gyazai_dir/script
+COPY logs $gyazai_dir/logs

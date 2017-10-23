@@ -10,6 +10,8 @@ services:
       - "53306:3306"
   python:
     build: ./python
+    volumes:
+      - ./python/logs:/gyazai/logs
     tty: true
     links:
       - mysql
