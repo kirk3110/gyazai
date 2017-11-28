@@ -58,9 +58,15 @@ class CardDataCollecter:
             # 先に出現するtrと同じclassのtrの子要素からのみデータを収集する
             first_row_class = card_div.table.tr.get('class')
             rows = card_div.find_all('tr', class_=first_row_class)
+
             # thをキーにtdを導くdictを作成
-            th_td_dict = defaultdict(
-                str, {row.th.text: row.td.text for row in rows})
+            th_td_dict = defaultdict(str)
+            for row in rows:
+                try:
+                    th_td_dict[row.th.text] = row.td.text
+                # Lvアップクリーチャーなどの場合thだけの行が出てくる
+                except AttributeError:
+                    break
 
             # 空のカードデータを作成し、各情報を詰めていく
             card_data = CardData()
