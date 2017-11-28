@@ -11,7 +11,7 @@ CREATE TABLE card_data
     eng_text VARCHAR(1023),
     type VARCHAR(127),
     power_toughness VARCHAR(15),
-    mana_cost VARCHAR(15),
+    mana_cost VARCHAR(63),
     loyality VARCHAR(3)
     );
 GRANT SELECT,UPDATE,INSERT,DELETE ON `gyazai`.card_data TO 'gyazai_user'@'%';
