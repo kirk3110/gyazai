@@ -21,9 +21,11 @@ class GyazaiDB:
             db='gyazai', charset='utf8',
             cursorclass=pymysql.cursors.DictCursor)
         gyazai_db.cursor = gyazai_db.connection.cursor()
-        yield gyazai_db
-        # コンテキスト実行された場合は自動的にクローズする
-        gyazai_db.disconnect()
+        try:
+            yield gyazai_db
+        # 自動的にクローズする
+        finally:
+            gyazai_db.disconnect()
 
     def disconnect(self):
         '''
