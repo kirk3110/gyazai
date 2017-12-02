@@ -21,7 +21,7 @@ def main():
               CardDataCollecter.collect_all_card_data()):
                 gyazai_db.insert_card_data(card_data)
                 logger.info('Insert row %d: %s (%s)',
-                            i+1, card_data.eng_name, card_data.jan_name)
+                            i+1, card_data.jan_name, card_data.eng_name)
     except Exception as e:
         logger.exception(e)
         sys.exit(1)
