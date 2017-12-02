@@ -24,6 +24,9 @@ class EngTextNormalizer:
                            for name in self.all_names)
 
     def normalize(self, this_name, text):
+        '''
+        テキスト正規化を実行する
+        '''
         # そのカード自身の名前・マナシンボル・数値はそれぞれタグに置き換えられる
         text = text.replace(this_name, self.MYSELF_TAG)
         text = self.RE_MANA.sub(self.MANA_TAG, text)
@@ -36,7 +39,10 @@ class EngTextNormalizer:
         return text
 
     def _minimum_normalize(self, str_):
-        # 記号はスペースに置き換えられる
+        '''
+        タグ付けなどを除く通常の正規化を実効する
+        '''
+        # 記号はスペースに置き換え
         str_ = self.RE_MARK.sub(' ', str_)
         # 複数スペースを詰める
         str_ = self.RE_SPACES.sub(' ', str_)
