@@ -1,28 +1,14 @@
 # -*- coding: utf-8 -*-
 import sys
-import os.path
-import logging
-import logging.handlers
 
+from log import setup_logger
 from collecter import CardDataCollecter
 from db import GyazaiDB
 from paths import DirPaths
 
 
 def main():
-    # ログ設定
-    logger = logging.getLogger()
-    logger.setLevel(logging.INFO)
-    # 標準出力へのハンドラ
-    stdout_handler = logging.StreamHandler(sys.stdout)
-    logger.addHandler(stdout_handler)
-    # ログファイルへのハンドラ
-    log_file_path = os.path.join(DirPaths.LOGS_DIR, 'collect_card_data.log')
-    file_handler = logging.handlers.RotatingFileHandler(log_file_path,
-                                                        maxBytes=1048576)
-    file_handler.setFormatter(
-        logging.Formatter("%(asctime)s: %(levelname)s: %(message)s"))
-    logger.addHandler(file_handler)
+    logger = setup_logger('collect_card_data.log')
 
     try:
         logger.info('Start collecting card data')
