@@ -3,6 +3,8 @@
 from contextlib import contextmanager
 import pymysql.cursors
 
+from carddata import CardData
+
 
 class GyazaiDB:
     '''
@@ -40,7 +42,7 @@ class GyazaiDB:
         '''
         sql = 'INSERT INTO \
 card_data(jan_name, eng_name, jan_text, eng_text, \
-type, power_toughness, mana_cost, loyality) \
+type_, power_toughness, mana_cost, loyality) \
 VALUES(%s, %s, %s, %s, %s, %s, %s, %s);'
         self.cursor.execute(sql, (
             card_data.jan_name, card_data.eng_name,
@@ -48,3 +50,17 @@ VALUES(%s, %s, %s, %s, %s, %s, %s, %s);'
             card_data.type_, card_data.power_toughness,
             card_data.mana_cost, card_data.loyality))
         self.connection.commit()
+
+    def fetch_all_card_data(self, **kwargs):
+        '''
+        DBに登録されている全てのカード情報を取得する
+        '''
+        # 全てのカード情報を取得
+        self.cursor.execute('SELECT * FROM card_data;')
+        # CardData形式に詰め替え
+        for row in self.cursor.fetchall():
+            yield CardData(
+                jan_name=row['jan_name'], eng_name=row['eng_name'],
+                jan_text=row['jan_text'], eng_text=row['eng_text'],
+                type_=row['type'], power_toughness=row['power_toughness'],
+                mana_cost=row['mana_cost'], loyality=row['loyality'])
