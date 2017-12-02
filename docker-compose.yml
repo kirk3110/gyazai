@@ -11,7 +11,9 @@ services:
   python:
     build: ./python
     volumes:
+      - ./python/data:/gyazai/data
       - ./python/logs:/gyazai/logs
+      - ./python/script:/gyazai/script
     tty: true
     links:
       - mysql
